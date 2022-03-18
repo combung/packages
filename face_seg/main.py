@@ -15,8 +15,7 @@ from util import convert_img_type
 n_classes = 19
 net = BiSeNet(n_classes=n_classes)
 net.cuda()
-model_path = os.path.join('./face_seg/model', '79999_iter.pth')
-net.load_state_dict(torch.load(model_path))
+net.load_state_dict(torch.load('./face_seg/ptnn/79999_iter.pth'))
 net.eval()
 
 to_tensor = transforms.Compose([
@@ -30,8 +29,7 @@ def face_parsing(pil_image):
     with torch.no_grad():
         #try:
         image = image.resize((512, 512), Image.BILINEAR)
-        img = to_tensor(image)
-        img = torch.unsqueeze(img, 0).cuda()
+        img = to_tensor(image).unsqueeze(0).cuda()
         out = net(img)[0]
         parsing = out.squeeze(0).cpu().numpy().argmax(0)
 
