@@ -1,3 +1,24 @@
+
+# to remain gitkeep
+!head_pose/ptnn/
+head_pose/ptnn/*
+!head_pose/ptnn/.gitkeep
+
+# to remain gitkeep
+!face_seg/ptnn/
+face_seg/ptnn/*
+!face_seg/ptnn/.gitkeep
+
+# to remain gitkeep
+!swinIR/ptnn/
+swinIR/ptnn/*
+!swinIR/ptnn/.gitkeep
+
+# to remain gitkeep
+!gfpgan/ptnn/
+gfpgan/ptnn/*
+!gfpgan/ptnn/.gitkeep
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
