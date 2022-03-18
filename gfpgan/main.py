@@ -1,14 +1,9 @@
-
-import os
-import sys
-from PIL import Image
-import numpy as np
-
 import torch
 import torchvision.transforms as transforms
 
 from gfpgan.net import GFPGANv1Clean
 
+from utils.util import convert_img_type
 
 # initialize model
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -37,6 +32,8 @@ gfpganNET = gfpganNET.to(device)
     
 
 def do_gfpgan(pil_image):
+    pil_image = convert_img_type(pil_image,'pil')
+
     with torch.no_grad():
         output = gfpganNET(transforms.ToTensor()(pil_image.resize((512,512))).unsqueeze(0).to("cuda"), return_rgb=False)[0]
         return (output.permute(0, 2, 3, 1) * 255).clamp(0, 255).squeeze().detach().cpu().numpy()

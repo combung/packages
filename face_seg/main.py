@@ -2,7 +2,6 @@
 # -*- encoding: utf-8 -*-
 import os
 import sys
-sys.path.append(os.getcwd())
 sys.path.append(os.path.join(os.getcwd(),'face_seg'))
 from PIL import Image
 
@@ -10,7 +9,7 @@ import torch
 import torchvision.transforms as transforms
 
 from model import BiSeNet
-from util import convert_img_type
+from utils.util import convert_img_type
 
 n_classes = 19
 net = BiSeNet(n_classes=n_classes)

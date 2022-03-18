@@ -1,6 +1,5 @@
 import os
 import sys
-sys.path.append(os.getcwd())
 sys.path.append(os.path.join(os.getcwd(),'head_pose'))
 
 import torch
@@ -11,7 +10,7 @@ import torchvision
 import torch.nn.functional as F
 
 import hopenet
-from util import convert_img_type
+from utils.util import convert_img_type
 
 """
 input

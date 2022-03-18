@@ -3,11 +3,11 @@
 import sys
 sys.path.append("./swinIR/")
 
-from PIL import Image
 from network import SwinIR
 
 import torch
 import torchvision.transforms as transforms
+from utils.util import convert_img_type
 
 SRnet = SwinIR(upscale=4, in_chans=3, img_size=64, window_size=8,
                         img_range=1., depths=[6, 6, 6, 6, 6, 6, 6, 6, 6], embed_dim=240,
@@ -17,6 +17,8 @@ SRnet.load_state_dict(torch.load("swinIR/ptnn/SR_large.pth")['params_ema'], stri
 SRnet.to("cuda").eval()
 
 def do_SR(pil_image):
+    pil_image = convert_img_type(pil_image,'pil')
+
     with torch.no_grad():
 
         img_lq = transforms.ToTensor()(pil_image).unsqueeze(0).to("cuda")
