@@ -8,13 +8,21 @@ from PIL import Image
 import torch
 import torchvision.transforms as transforms
 
-from model import BiSeNet
-from utils.util import convert_img_type
+from packages.face_seg.model import BiSeNet
+from packages.utils.util import convert_img_type
+from packages.utils.model_util import download_weight
+
+file_PATH = './packages/face_seg/ptnn/79999_iter.pth'
 
 n_classes = 19
 net = BiSeNet(n_classes=n_classes)
 net.cuda()
-net.load_state_dict(torch.load('./face_seg/ptnn/79999_iter.pth'))
+
+if not os.path.isfile(file_PATH):
+    download_weight('face_seg')
+    print('ptnn downloading...')
+net.load_state_dict(torch.load(file_PATH))
+
 net.eval()
 
 to_tensor = transforms.Compose([

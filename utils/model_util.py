@@ -3,12 +3,12 @@ import os
 
 # ex) job name : https://drive.google.com/uc?id={공유 link}
 
-weight_dic = {'gfpgan': 'https://drive.google.com/file/d/14OnzO4QWaAytKXVqcfWo_o2MzoR4ygnr/',
+weight_dic = {
+    'face_seg': 'https://drive.google.com/uc?id=10G_lqmYCP7piDKsJYGKU9_6mXHGDRP6j',
 }
 
 save_path = {
-    'gfpgan':'./packages/gfpgan/ptnn/model.pth',
-
+    'face_seg':'./face_seg/ptnn/79999_iter.pth',
 }
 
 def download_weight(job):
