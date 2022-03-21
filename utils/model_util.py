@@ -1,5 +1,4 @@
 import gdown
-import os
 
 # ex) job name : https://drive.google.com/uc?id={공유 link}
 
