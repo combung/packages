@@ -22,7 +22,7 @@ gfpganNET = GFPGANv1Clean(
     narrow=1,
     sft_half=True)
 
-file_PATH="./packages/gfpgan/ptnn/GFPGANv1.3.pth"
+file_PATH="./packages/gfpgan/ptnn/GFPGAN.pth"
 if not os.path.isfile(file_PATH):
     download_weight('gfpgan')
 

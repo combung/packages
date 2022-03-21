@@ -23,7 +23,7 @@ output
 device = torch.device(f'cuda:0' if torch.cuda.is_available() else 'cpu')
 model = hopenet.Hopenet(torchvision.models.resnet.Bottleneck, [3, 4, 6, 3], 66)
 
-file_PATH = './packages/head_pose/ptnn/hopenet_robust_alpha1.pkl'
+file_PATH = './packages/head_pose/ptnn/hopenet.pkl'
 if not os.path.isfile(file_PATH):
     download_weight('head_pose')
 

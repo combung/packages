@@ -7,14 +7,16 @@ weight_dic = {
     'head_pose': 'https://drive.google.com/uc?id=1AH9cJCPAbov1OxtXPaihqhgveZIGjF7U',
     'swinIR': 'https://drive.google.com/uc?id=1hQSl6iwmlhD6cR5qoMHc7TMqSxRZwHS6',
     'gfpgan': 'https://drive.google.com/uc?id=1fyXxJzQzh00WJbZEvUj_utFXIZt29_4Y',
+    'arcface': 'https://drive.google.com/uc?id=1ooTAvChl6j4YA1ohFtE87pKDTeZTsH4K',
 
 }
 
 save_path = {
     'face_seg': './packages/face_seg/ptnn/face_seg.pth',
-    'head_pose': './packages/head_pose/ptnn/hopenet_robust_alpha1.pkl',
-    'swinIR': './packages/swinIR/ptnn/swinIR_large.pth',
-    'gfpgan': './packages/gfpgan/ptnn/GFPGANv1.3.pth',
+    'head_pose': './packages/head_pose/ptnn/hopenet.pkl',
+    'swinIR': './packages/swinIR/ptnn/swinIR.pth',
+    'gfpgan': './packages/gfpgan/ptnn/GFPGAN.pth',
+    'arcface': './packages/arcface/ptnn/arcface.pth',
 
 }
 

@@ -13,7 +13,7 @@ SRnet = SwinIR(upscale=4, in_chans=3, img_size=64, window_size=8,
                         img_range=1., depths=[6, 6, 6, 6, 6, 6, 6, 6, 6], embed_dim=240,
                         num_heads=[8, 8, 8, 8, 8, 8, 8, 8, 8],
                         mlp_ratio=2, upsampler='nearest+conv', resi_connection='3conv')
-file_PATH="./packages/swinIR/ptnn/swinIR_large.pth"
+file_PATH="./packages/swinIR/ptnn/swinIR.pth"
 if not os.path.isfile(file_PATH):
     download_weight('swinIR')
 

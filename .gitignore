@@ -1,3 +1,7 @@
+# to remain gitkeep
+!arcface/ptnn/
+arcface/ptnn/*
+!arcface/ptnn/.gitkeep
 
 # to remain gitkeep
 !head_pose/ptnn/
