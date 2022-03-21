@@ -1,9 +1,11 @@
+import os
 import torch
 import torchvision.transforms as transforms
 
-from gfpgan.net import GFPGANv1Clean
+from packages.gfpgan.net import GFPGANv1Clean
 
-from utils.util import convert_img_type
+from packages.utils.util import convert_img_type
+from packages.utils.model_util import download_weight
 
 # initialize model
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -20,8 +22,11 @@ gfpganNET = GFPGANv1Clean(
     narrow=1,
     sft_half=True)
 
+file_PATH="./packages/gfpgan/ptnn/GFPGANv1.3.pth"
+if not os.path.isfile(file_PATH):
+    download_weight('gfpgan')
 
-loadnet = torch.load('gfpgan/ptnn/GFPGANv1.3.pth')
+loadnet = torch.load(file_PATH)
 if 'params_ema' in loadnet:
     keyname = 'params_ema'
 else:

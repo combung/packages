@@ -9,8 +9,9 @@ from torchvision import transforms
 import torchvision
 import torch.nn.functional as F
 
-import hopenet
-from utils.util import convert_img_type
+import packages.head_pose.hopenet as hopenet
+from packages.utils.util import convert_img_type
+from packages.utils.model_util import download_weight
 
 """
 input
@@ -21,7 +22,12 @@ output
 
 device = torch.device(f'cuda:0' if torch.cuda.is_available() else 'cpu')
 model = hopenet.Hopenet(torchvision.models.resnet.Bottleneck, [3, 4, 6, 3], 66)
-saved_state_dict = torch.load('./head_pose/ptnn/hopenet_robust_alpha1.pkl')
+
+file_PATH = './packages/head_pose/ptnn/hopenet_robust_alpha1.pkl'
+if not os.path.isfile(file_PATH):
+    download_weight('head_pose')
+
+saved_state_dict = torch.load(file_PATH)
 model.load_state_dict(saved_state_dict)
 model.cuda(device)
 model.eval()  # Change model to 'eval' mode (BN uses moving mean/var).
@@ -31,7 +37,7 @@ transforms.CenterCrop(224), transforms.ToTensor(),
 transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
 print('>>> Ready to deep head pose.')
 
-def cal_head_pose(pil_img):
+def do_head_pose(pil_img):
     idx_tensor = [idx for idx in range(66)]
     idx_tensor = torch.FloatTensor(idx_tensor).cuda(device)
 

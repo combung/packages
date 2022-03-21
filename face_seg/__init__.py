@@ -1,1 +1,1 @@
-from .main import face_parsing
+from .main import do_parsing
