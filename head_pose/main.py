@@ -50,8 +50,8 @@ def do_head_pose(pil_img):
 
     yaw, pitch, roll = model(img)
 
-    yaw_predicted = F.softmax(yaw,dim=1)
-    pitch_predicted = F.softmax(pitch,dim=1)
+    yaw_predicted = F.softmax(yaw,dim=-1)
+    pitch_predicted = F.softmax(pitch,dim=-)
     roll_predicted = F.softmax(roll,dim=-1)
     # Get continuous predictions in degrees.
     yaw_predicted = torch.sum(yaw_predicted.data[0] * idx_tensor) * 3 - 99
