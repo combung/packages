@@ -5,21 +5,20 @@ import numpy as np
 def convert_img_type(img, target_type):
     # check input image type
     try:
-        if img.filename:
-            img_type = 'pil'
+        if img.shape:
+            img_type = 'cv2'
     except:
-        img_type = 'cv2'
-
+        img_type = 'pil'
     if img_type == target_type:
         return img
     else:
         # cv2 -> pil
-        if target_type == 'pil':
+        if target_type == 'pil' and img_type=='cv2':
             img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
             pil_img = Image.fromarray(img)
             return pil_img
         # PIL -> cv2
-        elif target_type == 'cv2':
+        elif target_type == 'cv2' and img_type=='pil':
             img = np.array(img)
             opencv_image=cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
             return opencv_image
