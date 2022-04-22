@@ -23,6 +23,10 @@ swinIR/ptnn/*
 gfpgan/ptnn/*
 !gfpgan/ptnn/.gitkeep
 
+##
+samples
+outputs
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
