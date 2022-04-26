@@ -11,7 +11,11 @@ mtcnn = MTCNN()
 
 def do_align(image, output_size):
     pil_image = convert_img_type(image,'pil')
-    lms = mtcnn.detect(pil_image, landmarks=True)[2][0]
-    aligned_image = align_image(pil_image, lms, output_size)
-    return aligned_image
+    lms = mtcnn.detect(pil_image, landmarks=True)[2]
+
+    aligned_images = []
+    for lm in lms:
+        aligned_image = align_image(pil_image, lm, output_size)
+        aligned_images.append(aligned_image)
+    return aligned_images
 
