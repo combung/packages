@@ -32,7 +32,7 @@ def align_image(img, face_landmarks, output_size=256):
         quad /= shrink
         qsize /= shrink
 
-    src_pts = quad
+    src_pts = quad + 0.01*np.random.rand(4,2)
     ref_pts = np.array(((0, 0), (0, output_size), (output_size, output_size), (output_size, 0)))
     tfm, tfm_inv = get_similarity_transform_for_cv2(src_pts, ref_pts)
     face_img = cv2.warpAffine(np.array(img), tfm, (output_size, output_size), borderMode=cv2.BORDER_REFLECT)
