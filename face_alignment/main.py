@@ -13,11 +13,11 @@ from insightface.app import FaceAnalysis
 app = FaceAnalysis(providers=['CUDAExecutionProvider'], allowed_modules=['detection', 'landmark_2d_106'])
 app.prepare(ctx_id=0, det_size=(256, 256))
 
-def do_align(image, output_size, detector="insight", size_thres=512):
+def do_align(image, output_size, detector="insight", size_thres=256):
     pil_image = convert_img_type(image,'pil')
 
     if detector == "mtcnn":
-        boxes, _, lms = mtcnn.detect(pil_image, landmarks=True)[2]
+        boxes, _, lms = mtcnn.detect(pil_image, landmarks=True)
 
         if lms is None: 
             return None
