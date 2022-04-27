@@ -18,7 +18,7 @@ if __name__ == "__main__":
     root = "../../../../media/deep3090/새 볼륨/4Kdownload" # 동영상이 모여있는 폴더들이 있는 위치
     # dirs = os.listdir(root) # 동영상이 들어있는 폴더들의 이름을 모아놓은 리스트 ex - ["딩고뮤직", "딩고프리스타일"]
     dirs = ["딩고뮤직2"]
-    frame_freq = 10 # 몇 프레임마다 쓸건지? (인접한 프레임은 얼굴이 똑같을거라서 띄엄띄엄 추출)
+    frame_freq = 20 # 몇 프레임마다 쓸건지? (인접한 프레임은 얼굴이 똑같을거라서 띄엄띄엄 추출)
 
     # directory 하나씩 처리
     for dir in dirs:
